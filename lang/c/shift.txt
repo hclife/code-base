@@ -1,0 +1,7 @@
+6
+abcdefg 3
+wuvtsxyz 2
+abcxyz 2
+abcdefghi 100
+abc 1
+abc 2
