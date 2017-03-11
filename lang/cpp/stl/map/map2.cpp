@@ -14,5 +14,14 @@ int main()
 	for (itor=mapStudent.begin();itor!=mapStudent.end();++itor)
 		cout<<itor->first<<" "<<itor->second<<endl;
 
+	//erase the map elements
+	for (itor=mapStudent.begin();itor!=mapStudent.end();) {
+	    cout<<"erase "<<itor->first<<':'<<itor->second<<endl;
+	    mapStudent.erase(itor++);
+	}
+
+	for (itor=mapStudent.begin();itor!=mapStudent.end();++itor)
+		cout<<itor->first<<" "<<itor->second<<endl;
+
 	return 0;
 }
