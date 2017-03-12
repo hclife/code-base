@@ -3,8 +3,7 @@
 #include <map>
 using namespace std;
 
-int main()
-{
+int main() {
 	map<int,string> mapStudent;
 	pair<map<int,string>::iterator,bool> ret;
 	ret=mapStudent.insert(map<int,string>::value_type(1,"student_one"));

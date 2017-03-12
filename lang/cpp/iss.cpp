@@ -2,8 +2,7 @@
 #include <sstream>
 using namespace std;
 
-int main()
-{
+int main() {
 	istringstream iss("1 56.7");
 	cout<<iss.str()<<endl;
 

@@ -3,8 +3,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
+int main() {
 	int i=1000;
 	stringstream ss;ss<<i;
 	string s;ss>>s;

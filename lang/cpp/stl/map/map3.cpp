@@ -3,8 +3,7 @@
 #include <map>
 using namespace std;
 
-int main()
-{
+int main() {
 	map<int,string> mapStudent;
 	mapStudent[1]="student_one";
 	mapStudent[2]="student_two";

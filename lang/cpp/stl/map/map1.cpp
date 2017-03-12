@@ -3,8 +3,7 @@
 #include <map>
 using namespace std;
 
-int main()
-{
+int main() {
 	map<int, string> mapStudent;
 	mapStudent.insert(pair<int,string>(1,"student_one"));
 	mapStudent.insert(pair<int,string>(2,"student_two"));

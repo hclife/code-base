@@ -2,8 +2,7 @@
 #include <cstdarg>
 using namespace std;
 
-int add(int count,...)
-{
+int add(int count,...) {
 	int ret=0;
 	va_list args;
 	va_start(args,count);
@@ -18,8 +17,7 @@ int add(int count,...)
 	return ret;
 }
 
-int main()
-{
+int main() {
 	cout<<add(4,25,25,50,50)<<endl;
 	return 0;
 }

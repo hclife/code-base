@@ -3,8 +3,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
+int main() {
 	ostringstream oss("abc");
 	//oss.put('d');
 	//oss.put('e');

@@ -5,8 +5,7 @@
 #include <sstream>
 using namespace std;
 
-int main()
-{
+int main() {
 	std::string s="152";
 	int num1=std::atoi(s.c_str());
 	cout<<num1<<endl;

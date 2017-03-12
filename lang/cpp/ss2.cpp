@@ -3,8 +3,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
+int main() {
 	stringstream ss;
 	int a=100;string s;
 	ss<<a;ss>>s;cout<<s<<endl;

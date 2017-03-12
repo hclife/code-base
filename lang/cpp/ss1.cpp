@@ -3,8 +3,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
+int main() {
 	stringstream ss("ccc");
 	ss.put('d');
 	ss.put('e');
