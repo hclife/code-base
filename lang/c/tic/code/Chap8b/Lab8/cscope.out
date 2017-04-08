@@ -1,0 +1,582 @@
+cscope 15 /mnt/hgfs/d/development/Algorithm/ThinkingInC_PPT/code/Chap8b/Lab8 -q 0000000035 0000002595
+	@employ2.c
+
+2 
+	~<¡dio.h
+>
+
+3 
+	~<¡dlib.h
+>
+
+4 
+	~<¡ršg.h
+>
+
+5 
+	~"em¶oy2.h
+"
+
+7 
+	#MAX
+ 10
+
+	)
+
+8 
+	#LEN
+ (
+Em¶oy“
+)
+
+	)
+
+10 
+	sEm¶oy“
+
+
+12 
+	mÏ¡
+[16];
+
+13 
+	mfœ¡
+[11];
+
+14 
+	mt™Ë
+[16];
+
+15 
+	m§Ïry
+;
+
+18 
+Em¶oy“
+ *
+	$ü—‹Em¶oy“
+(*
+Ï¡
+, *
+fœ¡
+,
+
+19 *
+t™Ë
+, 
+§Ïry
+)
+
+21 
+Em¶oy“
+ *
+emp
+=(Em¶oy“ *)
+	`m®loc
+(
+LEN
+);
+
+22 ià(!
+emp
+è 
+NULL
+;
+
+23 
+	`¡rýy
+(
+emp
+->
+Ï¡
+,last);
+
+24 
+	`¡rýy
+(
+emp
+->
+fœ¡
+,first);
+
+25 
+	`¡rýy
+(
+emp
+->
+t™Ë
+,title);
+
+26 
+emp
+->
+§Ïry
+=salary;
+
+27  
+emp
+;
+
+28 
+	}
+}
+
+30 *
+	$g‘La¡
+(
+Em¶oy“
+ *
+emp
+)
+
+32 ià(!
+emp
+)  "";
+
+33  
+emp
+->
+Ï¡
+;
+
+34 
+	}
+}
+
+36 *
+	$g‘Fœ¡
+(
+Em¶oy“
+ *
+emp
+)
+
+38 ià(!
+emp
+)  "";
+
+39  
+emp
+->
+fœ¡
+;
+
+40 
+	}
+}
+
+42 *
+	$g‘T™Ë
+(
+Em¶oy“
+ *
+emp
+)
+
+44 ià(!
+emp
+)  "";
+
+45  
+emp
+->
+t™Ë
+;
+
+46 
+	}
+}
+
+48 
+	$g‘S®¬y
+(
+Em¶oy“
+ *
+emp
+)
+
+50 ià(!
+emp
+)  0;
+
+51  
+emp
+->
+§Ïry
+;
+
+52 
+	}
+}
+
+54 
+	$£tLa¡
+(
+Em¶oy“
+ *
+emp
+, *
+Ï¡
+)
+
+56 ià(!
+emp
+) ;
+
+57 
+	`¡rýy
+(
+emp
+->
+Ï¡
+,last);
+
+58 
+	}
+}
+
+60 
+	$£tFœ¡
+(
+Em¶oy“
+ *
+emp
+, *
+fœ¡
+)
+
+62 ià(!
+emp
+) ;
+
+63 
+	`¡rýy
+(
+emp
+->
+fœ¡
+,first);
+
+64 
+	}
+}
+
+66 
+	$£tT™Ë
+(
+Em¶oy“
+ *
+emp
+, *
+t™Ë
+)
+
+68 ià(!
+emp
+) ;
+
+69 
+	`¡rýy
+(
+emp
+->
+t™Ë
+,title);
+
+70 
+	}
+}
+
+72 
+	$£tS®¬y
+(
+Em¶oy“
+ *
+emp
+, 
+§Ïry
+)
+
+74 ià(!
+emp
+) ;
+
+75 
+emp
+->
+§Ïry
+=salary;
+
+76 
+	}
+}
+
+78 
+	$´štEm¶oy“
+(
+Em¶oy“
+ *
+emp
+)
+
+80 ià(!
+emp
+) {
+
+81 
+	`´štf
+("{}");
+
+84 
+	`´štf
+("{%s,%s,%s,%d}",
+emp
+->
+Ï¡
+,emp->
+fœ¡
+,
+
+85 
+emp
+->
+t™Ë
+,emp->
+§Ïry
+);
+
+86 
+	}
+}
+
+	@employ2.h
+
+3 #iâdeà
+__EMPLOYEE_H
+
+
+4 
+	#__EMPLOYEE_H
+
+
+	)
+
+7 
+Em¶oy“
+ 
+	tEm¶oy“
+;
+
+9 
+Em¶oy“
+* 
+ü—‹Em¶oy“
+(*, *, *, );
+
+10 * 
+g‘La¡
+(
+Em¶oy“
+*);
+
+11 * 
+g‘Fœ¡
+(
+Em¶oy“
+*);
+
+12 * 
+g‘T™Ë
+(
+Em¶oy“
+*);
+
+13 
+g‘S®¬y
+(
+Em¶oy“
+*);
+
+14 
+£tLa¡
+(
+Em¶oy“
+*, *);
+
+15 
+£tFœ¡
+(
+Em¶oy“
+*, *);
+
+16 
+£tT™Ë
+(
+Em¶oy“
+*, *);
+
+17 
+£tS®¬y
+(
+Em¶oy“
+*, );
+
+18 
+´štEm¶oy“
+(
+Em¶oy“
+*);
+
+	@main.c
+
+2 
+	~"em¶oy2.h
+"
+
+3 
+	~<¡dio.h
+>
+
+4 
+	~<¡dlib.h
+>
+
+6 
+	#MAXEMPS
+ 5
+
+	)
+
+8 
+	$maš
+()
+
+10 
+Em¶oy“
+* 
+emps
+[
+MAXEMPS
+];
+
+11 
+Em¶oy“
+* 
+p
+;
+
+12 
+i
+, 
+Ãmps
+ = 0;
+
+14 
+emps
+[
+Ãmps
+++] = 
+	`ü—‹Em¶oy“
+("Mantle", "Mickey", "Outfielder", 58);
+
+15 
+emps
+[
+Ãmps
+++] = 
+	`ü—‹Em¶oy“
+("Maris", "Roger", "Shortstop", 60);
+
+16 ià(
+emps
+[
+Ãmps
+-1]->
+§Ïry
+ != 61)
+
+17 
+emps
+[
+Ãmps
+-1]->
+§Ïry
+ = 61;
+
+19 
+p
+ = 
+	`ü—‹Em¶oy“
+("", "", "", 0);
+
+20 
+	`£tLa¡
+(
+p
+, "Kaline");
+
+21 
+	`£tFœ¡
+(
+p
+, "Al");
+
+22 
+	`£tT™Ë
+(
+p
+, "Outfielder");
+
+23 
+	`£tS®¬y
+(
+p
+, 52);
+
+24 
+emps
+[
+Ãmps
+++] = 
+p
+;
+
+26 
+i
+ = 0; i < 
+Ãmps
+; ++i)
+
+28 
+	`´štEm¶oy“
+(
+emps
+[
+i
+]);
+
+29 
+	`putch¬
+('\n');
+
+30 
+	`ä“
+(
+emps
+[
+i
+]);
+
+33 
+	}
+}
+
+	@
+1
+.
+0
+3
+27
+employ2.c
+employ2.h
+main.c

@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Employee	employ2.c	/^struct Employee$/;"	s	file:
+Employee	employ2.h	/^typedef struct Employee Employee;$/;"	t	typeref:struct:Employee
+LEN	employ2.c	8;"	d	file:
+MAX	employ2.c	7;"	d	file:
+MAXEMPS	main.c	6;"	d	file:
+__EMPLOYEE_H	employ2.h	4;"	d
+createEmployee	employ2.c	/^Employee *createEmployee(char *last, char *first,$/;"	f
+first	employ2.c	/^    char first[11];$/;"	m	struct:Employee	file:
+getFirst	employ2.c	/^char *getFirst(Employee *emp)$/;"	f
+getLast	employ2.c	/^char *getLast(Employee *emp)$/;"	f
+getSalary	employ2.c	/^int getSalary(Employee *emp)$/;"	f
+getTitle	employ2.c	/^char *getTitle(Employee *emp)$/;"	f
+last	employ2.c	/^    char last[16];$/;"	m	struct:Employee	file:
+main	main.c	/^int main()$/;"	f
+printEmployee	employ2.c	/^void printEmployee(Employee *emp)$/;"	f
+salary	employ2.c	/^    int salary;$/;"	m	struct:Employee	file:
+setFirst	employ2.c	/^void setFirst(Employee *emp, char *first)$/;"	f
+setLast	employ2.c	/^void setLast(Employee *emp, char *last)$/;"	f
+setSalary	employ2.c	/^void setSalary(Employee *emp, int salary)$/;"	f
+setTitle	employ2.c	/^void setTitle(Employee *emp, char *title)$/;"	f
+title	employ2.c	/^    char title[16];$/;"	m	struct:Employee	file:
