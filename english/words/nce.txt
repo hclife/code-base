@@ -1,3 +1,6 @@
+-----------
+words
+-----------
 puma
 spot
 evidence
@@ -309,6 +312,15 @@ befriend
 piteous
 radical
 folly
+costume
+sheet
+storeroom
+ammeter
+flee
+slam
+molecule
+shabby
+conscription
 
 
 
@@ -375,3 +387,13 @@ business opportunity
 form a picture of
 an element of truth
 good point
+consist of
+consist in
+consist with
+make up
+be composed of
+dress up as
+be impatient to
+read the metre
+let out cry
+slam the door
