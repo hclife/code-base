@@ -44,6 +44,7 @@ void shift2(char *s,int n) {
 }
 
 int main() {
+	freopen("string_shift.txt","r",stdin);
 	int T;scanf("%d",&T);
 	int n;char buf[SIZE];
 	while (T--) {
