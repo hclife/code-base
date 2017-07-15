@@ -33,7 +33,7 @@ class BubbleSort {
             endPosition = swapPosition;
         } // end while
         
-        printArray("Sorted", x);
+        printArray("Sorted ", x);
     } // end bubbleSort
     
     public static void main(String[] args) {
