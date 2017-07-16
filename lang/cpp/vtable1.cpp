@@ -32,10 +32,12 @@ public:
 		cout<<"vtbl address:"<<(int*)this<<endl;
 	}
 	void GetFirstVtblFunctionAddress() {
-		cout<<"First vbtl funtion address:"<<(int*)*(int*)this+0 << endl;
+		cout<<"First vbtl funtion address:"<<
+		    (int*)*(int*)this+0 << endl;
 	}
 	void GetSecondVtblFunctionAddress() {
-		cout<<"Second vbtl funtion address:"<<(int*)*(int*)this+1 << endl;
+		cout<<"Second vbtl funtion address:"<<
+		    (int*)*(int*)this+1 << endl;
 	}
 	void CallFirstVtblFunction() {
 		fun = (fun_pointer)* ( (int*) *(int*)this+0 );
@@ -55,7 +57,8 @@ private:
 int TestDrived::var = 3;
 
 int main() {
-	cout<<"sizeof(int):"<<sizeof(int)<<"sizeof(int*)"<<sizeof(int*)<<endl;
+	cout<<"sizeof(int):"<<sizeof(int)<<
+	    "sizeof(int*)"<<sizeof(int*)<<endl;
 	fun_pointer fun = NULL;
 	TestDrived a;
 	a.GetVtblAddress();
