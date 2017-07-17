@@ -111,9 +111,8 @@ void swap_point(struct point *x, struct point *y) {
 
 /* O(N^2) */
 void bubble_sort(int s[],int l,int r) {
-	rint i,j;
-	for (i=l;i<r;++i)
-	for (j=l;j<=r-i;++j)
+	for (rint i=l;i<r;++i)
+	for (rint j=l;j<=r-i;++j)
 	if (s[j]>s[j+1]) swap(&s[j],&s[j+1]);
 }
 
@@ -172,13 +171,11 @@ void counting_sort(int s[],int l,int r) {
 	while (count[i]--) output[++j]=i;
 }
 
-void shell_sort(int s[],int l,int r)
-{
+void shell_sort(int s[],int l,int r) {
 }
 
 
 //----------min heap-------------------//
-
 void min_heap_fix_up(int s[],int i) {
 	// i:child,j:father
 	rint j=(i-1)>>1,t=s[i];
@@ -223,7 +220,6 @@ void make_descending(int s[],int n) {
 }
 
 //----------max heap-------------------//
-
 void max_heap_fix_up(int s[],int i) {
 	// i:child,j:father
 	rint j=(i-1)>>1,t=s[i];
@@ -255,8 +251,7 @@ void max_heap_del(int s[],int n) {
 	max_heap_fix_down(s,0,n-1);
 }
 
-void make_max_heap(int s[],int n)
-{
+void make_max_heap(int s[],int n) {
 	for (rint i=(n>>1)-1;i>=0;--i)
 		max_heap_fix_down(s,i,n);
 }
@@ -651,36 +646,36 @@ void tree_free(tree *root)
 BST traversal
 ---------------------
 */
-inOrder(BinaryTree t) { //Ascending BST
-	if (t isnot empty) {
-		inOrder(left subtree);
-		process(root);
-		inOrder(right subtree);
+preOrder(BinaryTree *t) { //DFS
+	if (!t->empty()) {
+		process(t);
+		preOrder(t->left);
+		preOrder(t->right);
 	}
 }
 
-postOrder(BinaryTree t) {
-	if (t isnot empty) {
-		postOrder(left subtree);
-		postOrder(right subtree);
-		process(root);
+inOrder(BinaryTree *t) { //Ascending BST
+	if (!t->empty()) {
+		inOrder(t->left);
+		process(t);
+		inOrder(t->right);
 	}
 }
 
-preOrder(BinaryTree t) { //DFS
-	if (t isnot empty) {
-		process(root);
-		preOrder(left subtree);
-		preOrder(right subtree);
+postOrder(BinaryTree *t) {
+	if (!t->empty()) {
+		postOrder(t->left);
+		postOrder(t->right);
+		process(t);
 	}
 }
 
-levelOrder(BinaryTree t) { //BFS
-	if (t isnot empty) {
+levelOrder(BinaryTree *t) { //BFS
+	if (!t->empty()) {
 		queue.enqueue(t);
-		while (queue isnot empty) {
+		while (!queue.empty()) {
 			BinaryTree tree=queue.dequeue();
-			process(tree->root);
+			process(tree);
 			if (tree->left) queue.enqueue(tree->left);
 			if (tree->right) queue.enqueue(tree->right);
 		}
@@ -1147,15 +1142,13 @@ String
 */
 
 int str_cmp(const char *s,const char *t) {
-	rint i;
-	for (i=0;s[i] || t[i];++i)
+	for (rint i=0;s[i] || t[i];++i)
 	if (s[i]!=t[i]) return s[i]-t[i];
 	return 0;
 }
 
 int str_cmpn(const char *s,const char *t,uint n) {
-	rint i;
-	for (i=0;i<n;++i)
+	for (rint i=0;i<n;++i)
 	if (s[i]!=t[i]) return s[i]-t[i];
 	return 0;
 }
@@ -1166,8 +1159,7 @@ void str_cpy(char *s,const char *t) {
 }
 
 int str_len(const char *s) {
-	rint i;
-	for (i=0;s[i];++i);
+	for (rint i=0;s[i];++i);
 	return i;
 }
 
@@ -1199,14 +1191,13 @@ int mem_cmpn(int *s,int *t,uint n) {
 }
 
 /* String Pattern Matching: Sunday/KMP */
-int sunday(char s[],char t[])
-{
+int sunday(char s[],char t[]) {
 }
 
 int next[MAXM];
 void make_next(char s[]) {
-	rint i,j;next[0]=0;
-	for (i=1,j=0;i<M;++i) {
+	next[0]=0;
+	for (rint i=1,j=0;i<M;++i) {
 		while (j>0 && s[i]!=s[j]) j=next[j-1];
 		if (s[i]==s[j]) ++j;next[i]=j;
 	}
@@ -1214,8 +1205,7 @@ void make_next(char s[]) {
 
 /* find s in t */
 int kmp(char s[],char t[]) {
-	int M=strlen(s),N=strlen(t);
-	make_next(s);
+	int M=strlen(s),N=strlen(t);make_next(s);
 	for (rint i=0,j=0;i<N && j<M;++i) {
 		while (j>0 && t[i]!=s[j]) j=next[j-1];
 		if (t[i]==s[j]) ++j; if (j>=M) return 1;
@@ -1230,7 +1220,8 @@ typedef struct trie {
 } trie;
 
 trie *trie_create() {
-	trie *t=(trie *)malloc(LEN_TRIE);
+	trie *t=new trie;
+	//trie *t=(trie *)malloc(LEN_TRIE);
 	if (!t) return NULL;
 	memset(t,0,LEN_TRIE);t->data=0;
 	for (rint i=0;i<MAXZ;++i) t->next[i]=NULL;
@@ -1261,7 +1252,8 @@ void trie_delete(trie *root) {
 	if (!root) return;
 	for (i=0;i<MAXZ;++i)
 	if (t=root->next[i]) trie_delete(t);
-	if (root) free(root);
+	delete root;
+	//if (root) free(root);
 }
 
 /* AC Automation */
@@ -1327,7 +1319,7 @@ Math
 x*(2^n) -> x<<n
 x/(2^n) -> x>>n
 x%2     -> x&1
-x%(2^n) -> a&(2^n-1)
+x%(2^n) -> x&((1<<n)-1)
 #endif
 
 struct point {
@@ -1405,13 +1397,12 @@ ll power(int x,int n) {
 
 /* A <- A x B */
 void matrix_multiply(ll A[MAXN][MAXN],ll B[MAXN][MAXN]) {
-	rint i,j,k;
 	ll value,O[MAXN][MAXN];
 	memset(O,0LL,sizeof(O));
-	for (k=1;k<=N;++k)
-	for (i=1;i<=N;++i) {
+	for (rint k=1;k<=N;++k)
+	for (rint i=1;i<=N;++i) {
 		if (!A[i][k]) continue;
-		for (j=1;j<=N;++j) {
+		for (rint j=1;j<=N;++j) {
 			if (!B[k][j]) continue;
 			value=(A[i][k]*B[k][j])%DIV;
 			O[i][j]+=value;
@@ -1580,8 +1571,7 @@ Misc
 */
 char buf[SIZE];
 
-int check_palindrome(char s[],int n)
-{
+int check_palindrome(char s[],int n) {
 }
 
 void reverse_int(int s[],int n) {
@@ -1623,8 +1613,7 @@ void scan(int x) {
 	for (i=j=0;c=buf[i];++i) {
 		if (!is_digit(c) && c!='-') continue;
 		m=1;if (c=='-') {m=-1;++i;}
-		for (k=0;is_digit(c=buf[i]);++i)
-			k=k*10+c-'0';
+		for (k=0;is_digit(c=buf[i]);++i) k=k*10+c-'0';
 		map[x][++j]=m*k;
 	}
 }
@@ -1635,8 +1624,7 @@ void input(int s[]) {
 	fgets(buf,sizeof(buf),stdin);
 	for (i=j=0;c=buf[i];++i) {
 		if (!is_digit(c)) continue;
-		for (k=0;is_digit(c=buf[i]);++i)
-			k=k*10+c-'0';
+		for (k=0;is_digit(c=buf[i]);++i) k=k*10+c-'0';
 		s[++j]=k;
 	}
 }
