@@ -469,13 +469,59 @@ slist *slist_search(const slist *head,int key) {
 	return NULL;
 }
 
-void slist_add_tail(slist *head, slist *new)
-{
+void slist_add_tail(slist *head, slist *new) {
 }
 
-void slist_del_free(slist *entry)
-{
+void slist_del_free(slist *entry) {
 }
+
+slist *slist_find_mid(slist *head) {
+    slist *fast=head,*slow=head;
+    while (fast && fast->next) {
+	fast=fast->next->next;
+	slow=slow->next;
+    }
+    return slow;
+}
+
+//floyd:tortoise and hare algorithm
+slist *slist_check_loop(slist *head) {
+    slist *fast=head,*slow=head;
+    while (fast && fast->next) {
+	fast=fast->next->next;
+	slow=slow->next;
+	if (fast==slow) return fast;
+    }
+    return NULL;
+}
+
+size_t slist_search_loop_len(slist *head) {
+    slist *fast=slist_check_loop(head);
+    if (!fast) return 0;
+    size_t count=1;
+    for (slist *p=fast->next;p!=fast;++count);
+    return count;
+}
+
+slist *slist_search_loop_start(slist *head) {
+    slist *fast=slist_check_loop(head);
+    if (!fast) return NULL;
+    while (head!=fast) {
+	head=head->next;
+	fast=fast->next;
+    }
+    return head;
+}
+
+//check if two non-loop slist cross with each other
+slist *slist_check_cross(slist *head1,slist *head2) {
+    slist *pos=head1;
+    while (pos && pos->next) pos=pos->next;
+    if (pos) pos->next=head1;
+    return slist_check_loop(head2);
+}
+
+
 
 /*
 -------------------------------------
