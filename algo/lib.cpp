@@ -513,6 +513,17 @@ slist *slist_search_loop_start(slist *head) {
     return head;
 }
 
+slist *slist_reverse(slist *head) {
+    slist *prev=NULL;
+    while (head) {
+	slist *next=head->next;
+	head->next=prev;
+	prev=head;
+	head=next;
+    }
+    return prev;
+}
+
 //check if two non-loop slist cross with each other
 slist *slist_check_cross(slist *head1,slist *head2) {
     slist *pos=head1;
