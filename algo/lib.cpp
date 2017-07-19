@@ -475,6 +475,7 @@ void slist_add_tail(slist *head, slist *new) {
 void slist_del_free(slist *entry) {
 }
 
+//find the middle node of a single list
 slist *slist_find_mid(slist *head) {
     slist *fast=head,*slow=head;
     while (fast && fast->next) {
@@ -485,6 +486,8 @@ slist *slist_find_mid(slist *head) {
 }
 
 //floyd:tortoise and hare algorithm
+//check if loop exist in single list
+//If exist then return meeting point
 slist *slist_check_loop(slist *head) {
     slist *fast=head,*slow=head;
     while (fast && fast->next) {
@@ -495,14 +498,16 @@ slist *slist_check_loop(slist *head) {
     return NULL;
 }
 
+//search for loop length of a single list
 size_t slist_search_loop_len(slist *head) {
     slist *fast=slist_check_loop(head);
     if (!fast) return 0;
     size_t count=1;
-    for (slist *p=fast->next;p!=fast;++count);
+    for (slist *p=fast->next;p!=fast;p=p->next) ++count;
     return count;
 }
 
+//search for loop entry of a single list
 slist *slist_search_loop_start(slist *head) {
     slist *fast=slist_check_loop(head);
     if (!fast) return NULL;
@@ -510,7 +515,7 @@ slist *slist_search_loop_start(slist *head) {
 	head=head->next;
 	fast=fast->next;
     }
-    return head;
+    return fast;
 }
 
 slist *slist_reverse(slist *head) {
@@ -524,7 +529,7 @@ slist *slist_reverse(slist *head) {
     return prev;
 }
 
-//check if two non-loop slist cross with each other
+//check if two non-loop slist overlap with each other
 slist *slist_check_cross(slist *head1,slist *head2) {
     slist *pos=head1;
     while (pos && pos->next) pos=pos->next;
