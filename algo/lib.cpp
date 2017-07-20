@@ -1215,9 +1215,10 @@ int str_cmpn(const char *s,const char *t,uint n) {
 	return 0;
 }
 
-void str_cpy(char *s,const char *t) {
-	//for (rint i=0;s[i]=t[i];++i);
+char *str_copy(char *s,const char *t) {
+	char *p=s;
 	while (*s++=*t++);
+	return p;
 }
 
 int str_len(const char *s) {
