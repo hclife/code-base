@@ -1,3 +1,6 @@
+#ifndef __LIB_FILE__
+#define __LIB_FILE__
+
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -1707,3 +1710,15 @@ int main() {
 	printf("Main %f ms\n",difftime(end,start));
 	return 0;
 }
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* c program */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

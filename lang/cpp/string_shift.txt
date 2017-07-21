@@ -1,7 +1,8 @@
 6
 abcdefg 3
 wuvtsxyz 2
-abcxyz 2
+abcdefghi 2
 abcdefghi 100
+abcxyz 2
 abc 1
 abc 2
