@@ -42,12 +42,12 @@ typedef struct G {
 
 
 int main() {
-    printf("%lu\n",sizeof(A));
-    printf("%lu\n",sizeof(B));
-    printf("%lu\n",sizeof(C));
-    printf("%lu\n",sizeof(D));
-    printf("%lu\n",sizeof(E));
-    printf("%lu\n",sizeof(F));
-    printf("%lu\n",sizeof(G));
+    printf("%lu\n",sizeof(A)); //0
+    printf("%lu\n",sizeof(B)); //8
+    printf("%lu\n",sizeof(C)); //8
+    printf("%lu\n",sizeof(D)); //12
+    printf("%lu\n",sizeof(E)); //12
+    printf("%lu\n",sizeof(F)); //8
+    printf("%lu\n",sizeof(G)); //12
     return 0;
 }
