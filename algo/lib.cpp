@@ -1492,6 +1492,22 @@ uint num_of_ones(uint x) {
 	return n;
 }
 
+bool is_little_endian() {
+	int x=1;
+	char *p=(char*)&x;
+	return (*p)?true:false;
+}
+
+bool is_little_endian1() {
+	union {
+		int a;
+		char b;
+	} u;
+	u.a=1;
+	return u.b==1;
+}
+
+
 /* power(x^n): O(logN) */
 ll power(int x,int n) {
 	if (n<=0) return 1LL;
