@@ -472,7 +472,7 @@ slist *slist_search(const slist *head,int key) {
 	return NULL;
 }
 
-void slist_add_tail(slist *head, slist *new) {
+void slist_add_tail(slist *head, slist *node) {
 }
 
 void slist_del_free(slist *entry) {
@@ -1205,6 +1205,47 @@ int has_cycle(int in[MAX],int out[MAX]) {
 String
 ----------------
 */
+
+class String {
+public:
+	String(const char *str=NULL);
+	String(const String &s);
+	~String();
+	String &operator=(const String &s);
+private:
+	char *m_data;
+};
+
+String::String(const char *str) {
+	if (!str) {
+		m_data=new char[1];
+		*m_data='\0';
+	} else {
+		int len=strlen(str);
+		m_data=new char[len+1];
+		if (m_data) strcpy(m_data,str);
+	}
+}
+
+String::~String() {
+	delete [] m_data;
+	m_data=nullptr;
+}
+
+String::String(const String &s) {
+	int len=strlen(s.m_data);
+	m_data=new char[len+1];
+	if (m_data) strcpy(m_data,s.m_data);
+}
+
+String &String::operator=(const String &s) {
+	if (this==&s) return *this;
+	delete [] m_data;
+	int len=strlen(s.m_data);
+	m_data=new char[len+1];
+	if (m_data) strcpy(m_data,s.m_data);
+	return *this;
+}
 
 int str_cmp(const char *s,const char *t) {
 	for (rint i=0;s[i] || t[i];++i)
