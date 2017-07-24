@@ -34,14 +34,12 @@ int main () {
         cin >> element1 >> element2;
         AddElements<double> myfloat (element1);
         cout << myfloat.add(element2) << endl;
-    }
-    else if(type == "int") {
+    } else if(type == "int") {
         int element1, element2;
         cin >> element1 >> element2;
         AddElements<int> myint (element1);
         cout << myint.add(element2) << endl;
-    }
-    else if(type == "string") {
+    } else if(type == "string") {
         string element1, element2;
         cin >> element1 >> element2;
         AddElements<string> mystring (element1);
