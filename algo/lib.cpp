@@ -83,7 +83,7 @@ typedef struct point {
 	int data;
 } point;
 
-int Ans,N,M,C;
+int N,M,C;
 int map[MAX][MAX]={0};
 
 void dump(int map[MAX][MAX],const char *str) {
@@ -1758,7 +1758,7 @@ int solve() {
 }
 
 int main() {
-	time_t start=clock();
+	int Ans;time_t start=clock();
 	int T;setbuf(stdout,NULL);scanf("%d",&T);
 	for (rint t=1;t<=T;++t) {
 		printf("#%d %d\n",t,Ans=solve());
