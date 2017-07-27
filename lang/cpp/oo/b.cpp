@@ -22,15 +22,15 @@ class Derived : public Base
 public:
 	virtual void f(float x)
 	{
-		cout<<"Derived::f(float)"<< x <<endl;   //多态、覆盖
+		cout<<"Derived::f(float)"<< x <<endl;   //override
 	}
 	void g(int x)
 	{
-		cout<<"Derived::g(int)"<< x <<endl;     //隐藏
+		cout<<"Derived::g(int)"<< x <<endl;     //hide
 	}
 	void h(float x)
 	{
-		cout<<"Derived::h(float)"<< x <<endl;   //隐藏
+		cout<<"Derived::h(float)"<< x <<endl;   //hide
 	}
 };
 int main(void)
