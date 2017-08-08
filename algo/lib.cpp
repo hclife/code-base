@@ -63,20 +63,20 @@ using namespace std;
 #define is_low_case(c)	((c)>='a' && (c)<='z')
 #define is_up_case(c)	((c)>='A' && (c)<='Z')
 #define is_alpha(c)	(is_low_case(c) || is_up_case(c))
-#define queue_init	(head=tail=0)
-#define queue_is_full	(head==(tail+1)%SIZE)
-#define queue_is_empty	(head==tail)
-#define en_queue(x)	(queue[tail++]=(x))
-#define de_queue	(queue[head++])
-#define stack_init	(top=0)
-#define stack_is_full	(top==SIZE)
-#define stack_is_empty	(!top)
-#define push_stack(x)	(stack[top++]=(x))
-#define pop_stack	(stack[--top])
-#define for_each_one	for (rint i=1;i<=N;++i) \
-			for (rint j=1;j<=M;++j)
-#define for_each(R,C)	for (rint i=1;i<=(R);++i) \
-			for (rint j=1;j<=(C);++j)
+#define queue_init		(head=tail=0)
+#define queue_is_empty		(head==tail)
+#define queue_is_full		(head==(tail+1)%SIZE)
+#define en_queue_simple(x)	(queue[tail++]=(x))
+#define de_queue_simple		(queue[head++])
+#define stack_init		(top=0)
+#define stack_is_full		(top==SIZE)
+#define stack_is_empty		(!top)
+#define pop_stack_simple	(stack[--top])
+#define push_stack_simple(x)	(stack[top++]=(x))
+#define for_each_one		for (rint i=1;i<=N;++i) \
+				for (rint j=1;j<=M;++j)
+#define for_each(R,C)		for (rint i=1;i<=(R);++i) \
+				for (rint j=1;j<=(C);++j)
 
 
 typedef struct point {
