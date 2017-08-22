@@ -321,6 +321,17 @@ slam
 molecule
 shabby
 conscription
+gangster
+remarkable
+Florence
+Florentine
+funeral
+valiant
+prominent
+glassware
+inscribe
+shrine
+strike
 
 
 
@@ -397,3 +408,9 @@ be impatient to
 read the metre
 let out cry
 slam the door
+in return for
+put sb out of business
+as long ago as
+make a discovery
+make a name for sb
+dedicate to the memory of
