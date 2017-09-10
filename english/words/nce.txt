@@ -332,6 +332,22 @@ glassware
 inscribe
 shrine
 strike
+mint
+peeling
+chapped
+vegetal
+moist
+moisturizing
+grease
+greasy
+rattle
+thrifty
+nephew
+bounce
+pavement
+brigade
+
+
 
 
 
@@ -414,3 +430,5 @@ as long ago as
 make a discovery
 make a name for sb
 dedicate to the memory of
+go a long way
+what is more
