@@ -9,6 +9,7 @@
 #include <ctime>
 #include <cassert>
 #include <iostream>
+#include <sstream>
 #include <algorithm>
 #include <vector>
 #include <string>
@@ -92,6 +93,14 @@ void dump(int map[MAX][MAX],const char *str) {
 		for (int j=1;j<=M;++j) printf("%d ",map[i][j]);
 		printf("\n");
 	}
+}
+
+template <class T>
+void dumpv(vector<T> &v,const string s) {
+	cout<<s<<":";
+	for (int i=0;i<v.size();++i)
+		cout<<v[i]<<' ';
+	cout<<endl;
 }
 
 /*
@@ -1245,6 +1254,12 @@ String &String::operator=(const String &s) {
 	m_data=new char[len+1];
 	if (m_data) strcpy(m_data,s.m_data);
 	return *this;
+}
+
+string itos(int x) {
+	stringstream ss;ss<<x;
+	string s;ss>>s;
+	return s;
 }
 
 int str_cmp(const char *s,const char *t) {
