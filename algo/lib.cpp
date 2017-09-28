@@ -103,6 +103,13 @@ void dumpv(vector<T> &v,const string s) {
 	cout<<endl;
 }
 
+template <class T>
+void dumps(set<T> &s) {
+	for (auto it=s.begin();it!=s.end();++it)
+		cout<<*it<<' ';
+	cout<<endl;
+}
+
 /*
 ----------------
 Sorting
