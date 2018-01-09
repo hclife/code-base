@@ -13,6 +13,8 @@ int main() {
      mystack.pop();
   }
   std::cout << "total: " << sum << '\n';
+  std::cout << "mystack size: " << mystack.size() << '\n';
+  std::cout << "mystack top: " << mystack.top() << '\n';
 
   return 0;
 }
