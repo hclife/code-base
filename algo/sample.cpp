@@ -18,6 +18,8 @@ using namespace std;
 #define is_lower(c)	((c)>='a' && (c)<='z')
 #define is_upper(c)	((c)>='A' && (c)<='Z')
 #define is_alpha(c)	(is_lower(c) || is_upper(c))
+#define maxv(x,y)	((x)>(y)?(x):(y))
+#define minv(x,y)	((x)<(y)?(x):(y))
 
 int main() {
 	return 0;
