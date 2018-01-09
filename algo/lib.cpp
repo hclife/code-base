@@ -55,8 +55,8 @@ using namespace std;
 #define LEN_TREE	sizeof(struct tree)
 #define LEN_LIST	sizeof(struct list)
 #define HASH(key)	(key%MOD)
-#define MINV(x,y)	((x)<(y)?(x):(y))
-#define MAXV(x,y)	((x)>(y)?(x):(y))
+#define minv(x,y)	((x)<(y)?(x):(y))
+#define maxv(x,y)	((x)>(y)?(x):(y))
 #define ABS(x)		((x)>=0?(x):-(x))
 #define SWAP(T,x,y)	{T t=(x);(x)=(y);(y)=t;}
 #define is_equal(x,y)	(ABS((x)-(y))<MAXP)
@@ -1072,9 +1072,9 @@ void tarjan(int v) {
 	for (slist *p=map[v];p;p=p->next) {
 		if (!dfn[p->v]) {
 			tarjan(p->v);
-			low[v]=MINV(low[v],low[p->v]);
+			low[v]=minv(low[v],low[p->v]);
 		} else if (vis[p->v]) {
-			low[v]=MINV(low[v],dfn[p->v]);
+			low[v]=minv(low[v],dfn[p->v]);
 		}
 	}
 	if (dfn[v]==low[v]) {
@@ -1121,7 +1121,7 @@ int main() {
 	int vis[MAXM],match[MAXM];
 	memset(match,-1,sizeof(match));
 	memset(map,0,sizeof(map));
-	Ans=hunagry();
+	ans=hunagry();
 	return 0;
 }
 
@@ -1267,6 +1267,12 @@ string itos(int x) {
 	stringstream ss;ss<<x;
 	string s;ss>>s;
 	return s;
+}
+
+int stoi(string s) {
+	stringstream ss;ss<<s;
+	int x;ss>>x;
+	return x;
 }
 
 int str_cmp(const char *s,const char *t) {
@@ -1477,13 +1483,13 @@ int gcd(int x,int y) {
 
 /* O(N): Get the maximum continuous partial sum */
 ll kadane() {
-	ll sum=0LL,Ans=-INF;
+	ll sum=0LL,ans=-INF;
 	for (rint i=1;i<=N;++i) {
 		sum+=data[i];
-		sum=MAXV(sum,data[i]);
-		Ans=MAXV(Ans,sum);
+		sum=maxv(sum,data[i]);
+		ans=maxv(ans,sum);
 	}
-	return Ans;
+	return ans;
 }
 
 /* count how many trailing zeros of n! */
@@ -1647,7 +1653,7 @@ int w[MAXN],v[MAXN],c[MAXN],f[MAXW];
 void zero_one() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=W;j>=w[i];--j)
-	f[j]=MAXV(f[j],f[j-w[i]]+v[i]);
+	f[j]=maxv(f[j],f[j-w[i]]+v[i]);
 }
 
 /* multiple knapsack */
@@ -1655,14 +1661,14 @@ void multiple() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=1;j<=c[i];++j)
 	for (rint k=W;k>=w[i];--k)
-	f[k]=MAXV(f[k],f[k-w[i]]+v[i]);
+	f[k]=maxv(f[k],f[k-w[i]]+v[i]);
 }
 
 /* complete knapsack */
 void complete() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=w[i];j<=W;++j)
-	f[j]=MAXV(f[j],f[j-w[i]]+v[i]);
+	f[j]=maxv(f[j],f[j-w[i]]+v[i]);
 }
 
 //Non-contiguous Longest Common Subsequence (LCS)
@@ -1675,9 +1681,36 @@ int lcs(string &s,string &t) {
 		int y=0;if (j>0) y=dp[i][j-1];
 		int z=(s[i]==t[j]);
 		if (i>0 && j>0) z+=dp[i-1][j-1];
-		dp[i][j]=MAXV(MAXV(x,y),z);
+		dp[i][j]=maxv(maxv(x,y),z);
 	}
 	return dp[ssize-1][tsize-1];
+}
+
+//Non-contiguous Longest Increasing Subsequence (LIS1)
+//d[i]=maxv{1,d[j]+1} (for j<i && v[j]<v[i]) O(N^2)
+int lis1(vector<int> &v) {
+	int ans=0,n=v.size();
+	vector<int> d(n,1);
+	for (rint i=1;i<n;++i) {
+		for (rint j=0;j<i;++j)
+		if (v[j]<v[i]) d[i]=maxv(d[i],d[j]+1);
+		ans=maxv(ans,d[i]);
+	}
+	return ans;
+}
+
+//Non-contiguous Longest Increasing Subsequence (LIS2)
+//d[i]: the min last value of lis with len i+1 O(NlogN)
+int lis2(vector<int> &v) {
+	int ans=0,n=v.size();
+	vector<int> d(n,INF);
+	vector<int>::iterator low;
+	for (rint i=0;i<n;++i) {
+		low=lower_bound(d.begin(),d.end(),v[i]);
+		*low=v[i];
+	}
+	low=lower_bound(d.begin(),d.end(),INF);
+	return ans=low-d.begin();
 }
 
 /*
@@ -1780,10 +1813,10 @@ int solve() {
 }
 
 int main() {
-	int Ans;time_t start=clock();
+	int ans;time_t start=clock();
 	int T;setbuf(stdout,NULL);scanf("%d",&T);
 	for (rint t=1;t<=T;++t) {
-		printf("#%d %d\n",t,Ans=solve());
+		printf("#%d %d\n",t,ans=solve());
 	}
 	time_t end=clock();
 	printf("Main %f ms\n",difftime(end,start));
