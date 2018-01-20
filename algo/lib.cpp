@@ -464,7 +464,7 @@ Single Link List
 -------------------------------------
 */
 
-/* Iterate over a single list */
+// Iterate over a single list
 #define slist_for_each(pos,head) \
 	for (pos=(head)->next;pos;pos=pos->next)
 
@@ -821,7 +821,7 @@ void write_to_map(int x,int y,int c) {
 	p->next=NULL;
 }
 
-/* create graph link list for lines */
+// create graph link list for lines
 void graph_create_list() {
 	int fm,to,cost;
 	for (rint i=1;i<=N;++i) map[i]=NULL;
@@ -832,7 +832,7 @@ void graph_create_list() {
 	}
 }
 
-/* create graph array list for lines */
+// create graph array list for lines
 void graph_create_glist() {
 	int fm,to,cost;
 	memset(gcount,0,sizeof(gcount));
@@ -1024,7 +1024,7 @@ int bellman_ford(int v,int dist[MAXN],int prev[MAXN]) {
 	return 0;
 }
 
-/* The bfs queue optimized version of bellman-ford. O(KM) while K<=2 */
+// The bfs queue optimized version of bellman-ford. O(KM) while K<=2
 int spfa_bfs(int x) {
 	struct point in,out;queue_init;
 	vis[in.v=x]=in_count[x]=1;en_queue(in);
@@ -1046,8 +1046,9 @@ int spfa_bfs(int x) {
 	return 0;
 }
 
-/* The dfs optimized version of bellman-ford to search for negative loops
- * more quickly, but may need more optimization for it. */
+// The dfs optimized version of bellman-ford to
+// search for negative loops more quickly, but
+// may need more optimization for it.
 int spfa_dfs(int x) {
 	vis[x]=1;
 	for (int j=1;j<=gcount[x];++j) {
@@ -1064,7 +1065,7 @@ int spfa_dfs(int x) {
 	return 0;
 }
 
-/* Get the strongly connected components of directed graph */
+// Get the strongly connected components of directed graph.
 int time=0,vis[MAX],low[MAX],dfn[MAX];
 void tarjan(int v) {
 	dfn[v]=low[v]=++time;
@@ -1095,7 +1096,7 @@ int main() {
 	return 0;
 }
 
-/* match[j]=x: The jth gift is owned by person x. */
+// match[j]=x: The jth gift is owned by person x.
 int dfs(int x) {
 	for (rint j=1;j<=M;++j)
 	if (map[x][j] && !vis[j]) {
@@ -1125,7 +1126,7 @@ int main() {
 	return 0;
 }
 
-/* Union-Find */
+// Union-Find
 typedef struct node {
 	int num,father;
 	int sum,ans,flag;
@@ -1325,7 +1326,7 @@ int mem_cmpn(int *s,int *t,uint n) {
 	return 0;
 }
 
-/* String Pattern Matching: Sunday/KMP */
+// String Pattern Matching: Sunday/KMP
 int sunday(char s[],char t[]) {
 }
 
@@ -1338,7 +1339,7 @@ void make_next(char s[]) {
 	}
 }
 
-/* find s in t */
+// find s in t
 int kmp(char s[],char t[]) {
 	int M=strlen(s),N=strlen(t);make_next(s);
 	for (rint i=0,j=0;i<N && j<M;++i) {
@@ -1348,7 +1349,7 @@ int kmp(char s[],char t[]) {
 	return 0;
 }
 
-/* Trie Structure */
+// Trie Structure
 typedef struct trie {
 	struct trie *next[MAXZ];
 	int data;
@@ -1391,7 +1392,7 @@ void trie_delete(trie *root) {
 	//if (root) free(root);
 }
 
-/* AC Automation */
+// AC Automation
 void ac_auto()
 {
 }
@@ -1468,20 +1469,27 @@ struct point {
 #define cross_product(a,b,c)			\
 	((a.x-c.x)*(b.y-a.y)-(b.x-a.x)*(a.y-c.y))
 
-/* Get the square of distance between A and B */
+// Get the square of distance between A and B
 int distance(struct point a, struct point b) {
 	int dx=a.x-b.x;
 	int dy=a.y-b.y;
 	return dx*dx+dy*dy;
 }
 
-/* Euclid algo to get the greatest common divisor of two numbers */
+// Euclid to get the greatest common divisor of two numbers
 int gcd(int x,int y) {
 	if (!y) return x;
 	return gcd(y,x%y);
 }
 
-/* O(N): Get the maximum continuous partial sum */
+// LCM (Lowest Common Multiple)
+int lcm(int x,int y) {
+	int g=gcd(x,y);
+	return x*y/g;
+}
+
+
+// O(N): Get the maximum continuous partial sum
 ll kadane() {
 	ll sum=0LL,ans=-INF;
 	for (rint i=1;i<=N;++i) {
@@ -1492,7 +1500,7 @@ ll kadane() {
 	return ans;
 }
 
-/* count how many trailing zeros of n! */
+// count how many trailing zeros of n!
 uint tzeros(uint n) {
 	uint r=0;
 	while (n/5) {
@@ -1502,7 +1510,7 @@ uint tzeros(uint n) {
 	return r;
 }
 
-/* count how many number of 1s of a uint */
+// count how many number of 1s of a uint
 uint hakmem(uint x) {
 	uint n=(x>>1)&033333333333;x-=n;
 	n=(n>>1)&033333333333;x-=n;
@@ -1684,6 +1692,20 @@ int lcs(string &s,string &t) {
 		dp[i][j]=maxv(maxv(x,y),z);
 	}
 	return dp[ssize-1][tsize-1];
+}
+
+//Contiguous Longest Common Substring (LCS1)
+int lcs1(const string &s,const string &t) {
+	int ssize=s.size(),tsize=t.size();
+	int d[ssize][tsize],ans=0;
+	for (rint i=0;i<ssize;++i)
+	for (rint j=0;j<tsize;++j) {
+		int prev=0;d[i][j]=0;
+		if (i>0 && j>0) prev=d[i-1][j-1];
+		if (s[i]==t[j]) d[i][j]=prev+1;
+		ans=maxv(ans,d[i][j]);
+	}
+	return ans;
 }
 
 //Non-contiguous Longest Increasing Subsequence (LIS1)
