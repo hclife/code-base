@@ -50,7 +50,8 @@ int main() {
 		int y,m,d;
 		cin>>y>>m>>d;
 		//Date t(y,m,d);
-		Date t;t.setDate(y,m,d);
+		Date t;
+		t.setDate(y,m,d);
 		t.print();
 		cout<<std::boolalpha;
 		cout<<t.isLeapYear()<<endl;
