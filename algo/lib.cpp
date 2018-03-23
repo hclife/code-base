@@ -1270,7 +1270,7 @@ string itos(int x) {
 	return s;
 }
 
-int stoi(string s) {
+int stoi(const string &s) {
 	stringstream ss;ss<<s;
 	int x;ss>>x;
 	return x;
@@ -1650,21 +1650,25 @@ double square_root(double x) {
 }
 
 /*
--------------------------
-DP(Dynamic Programming)
--------------------------
+* -------------------------
+* DP(Dynamic Programming)
+* -------------------------
+* w[i]:the weight of each bag
+* v[i]:the value  of each bag
+* c[i]:the count  of each bag
+* f[i]:the best value of each weight
 */
 
 int w[MAXN],v[MAXN],c[MAXN],f[MAXW];
 
-/* 0-1 knapsack */
+// 0-1 knapsack
 void zero_one() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=W;j>=w[i];--j)
 	f[j]=maxv(f[j],f[j-w[i]]+v[i]);
 }
 
-/* multiple knapsack */
+// multiple knapsack
 void multiple() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=1;j<=c[i];++j)
@@ -1672,7 +1676,7 @@ void multiple() {
 	f[k]=maxv(f[k],f[k-w[i]]+v[i]);
 }
 
-/* complete knapsack */
+// complete knapsack
 void complete() {
 	for (rint i=1;i<=N;++i)
 	for (rint j=w[i];j<=W;++j)
