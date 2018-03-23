@@ -724,10 +724,18 @@ void tree_free(tree *root)
 
 /*
 ---------------------
-BST traversal
+BST traversal methods
 ---------------------
 */
-preOrder(BinaryTree *t) { //DFS
+typedef struct TreeNode {
+	int val;
+	TreeNode *left;
+	TreeNode *right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+} TreeNode;
+
+//pre-order traversal methods
+preOrder(TreeNode *t) { //DFS
 	if (!t->empty()) {
 		process(t);
 		preOrder(t->left);
@@ -735,7 +743,30 @@ preOrder(BinaryTree *t) { //DFS
 	}
 }
 
-inOrder(BinaryTree *t) { //Ascending BST
+vector<int> preorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	vector<int> lv=preorderTraversal(root->left);
+	vector<int> rv=preorderTraversal(root->right);
+	v.push_back(root->val);
+	for (int i=0;i<lv.size();++i) v.push_back(lv[i]);
+	for (int i=0;i<rv.size();++i) v.push_back(rv[i]);
+	return v;
+}
+
+vector<int> preorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	stack<TreeNode *> s;s.push(root);
+	while (s.size()) {
+		TreeNode *tnode=s.top();s.pop();
+		v.push_back(tnode->val);
+		if (tnode->right) s.push(tnode->right);
+		if (tnode->left) s.push(tnode->left);
+	}
+    return v;
+}
+
+//in-order traversal methods
+inOrder(TreeNode *t) { //Ascending BST
 	if (!t->empty()) {
 		inOrder(t->left);
 		process(t);
@@ -743,7 +774,73 @@ inOrder(BinaryTree *t) { //Ascending BST
 	}
 }
 
-postOrder(BinaryTree *t) {
+vector<int> inorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	vector<int> lv=inorderTraversal(root->left);
+	vector<int> rv=inorderTraversal(root->right);
+	for (int i=0;i<lv.size();++i) v.push_back(lv[i]);
+	v.push_back(root->val);
+	for (int i=0;i<rv.size();++i) v.push_back(rv[i]);
+	return v;
+}
+
+vector<int> inorderTraversal(TreeNode *root) {
+	vector<int> v;
+	stack<TreeNode *> s;
+	while (s.size() || root) {
+		while (root) {
+			s.push(root);
+			root=root->left;
+		}
+		if (s.size()) {
+			root=s.top();s.pop();
+			v.push_back(root->val);
+			root=root->right;
+		}
+	}
+	return v;
+}
+
+typedef struct data {
+    int val;
+    bool in_queue;
+    data(int v,bool in):val(v),in_queue(in) {}
+} data;
+ 
+vector<int> inorderTraversal(TreeNode *root) {
+    vector<int> v; if (!root) return v;
+    queue<TreeNode *> q;q.push(root);
+    data d(root->val,true);
+    vector<data> vd;vd.push_back(d);
+    while (q.size()) {
+        vector<data> _vd;
+        for (int i=0;i<vd.size();++i) {
+            if (vd[i].in_queue==false) {
+                _vd.push_back(vd[i]);
+                continue;
+            }
+            TreeNode *tnode=q.front();q.pop();
+            if (tnode->left) {
+                q.push(tnode->left);
+                data p(tnode->left->val,true);
+                _vd.push_back(p);
+            }
+            vd[i].in_queue=false;
+            _vd.push_back(vd[i]);
+            if (tnode->right) {
+                q.push(tnode->right);
+                data p(tnode->right->val,true);
+                _vd.push_back(p);
+            }
+        }
+        vd.swap(_vd);
+    }
+    for (int i=0;i<vd.size();++i) v.push_back(vd[i].val);
+    return v;
+}
+
+//post-order traversal methods	
+postOrder(TreeNode *t) { //DFS
 	if (!t->empty()) {
 		postOrder(t->left);
 		postOrder(t->right);
@@ -751,11 +848,49 @@ postOrder(BinaryTree *t) {
 	}
 }
 
-levelOrder(BinaryTree *t) { //BFS
+vector<int> postorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	vector<int> lv=postorderTraversal(root->left);
+	vector<int> rv=postorderTraversal(root->right);
+	for (int i=0;i<lv.size();++i) v.push_back(lv[i]);
+	for (int i=0;i<rv.size();++i) v.push_back(rv[i]);
+	v.push_back(root->val);
+	return v;
+}
+
+vector<int> postorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	stack<TreeNode *> s;s.push(root);
+	while (s.size()) {
+		TreeNode *tnode=s.top();s.pop();
+		v.push_back(tnode->val);
+		if (tnode->left) s.push(tnode->left);
+		if (tnode->right) s.push(tnode->right);
+	}
+	reverse(v.begin(),v.end());
+	return v;
+}
+
+vector<int> postorderTraversal(TreeNode *root) {
+	vector<int> v; if (!root) return v;
+	deque<int> d;
+	stack<TreeNode *> s;s.push(root);
+	while (s.size()) {
+		TreeNode *tnode=s.top();s.pop();
+		d.push_front(tnode->val);
+		if (tnode->left) s.push(tnode->left);
+		if (tnode->right) s.push(tnode->right);
+	}
+	for (int i=0;i<d.size();++i) v.push_back(d[i]);
+	return v;
+}
+
+//level-order traversal methods
+levelOrder(TreeNode *t) { //BFS
 	if (!t->empty()) {
 		queue.enqueue(t);
 		while (!queue.empty()) {
-			BinaryTree tree=queue.dequeue();
+			TreeNode tree=queue.dequeue();
 			process(tree);
 			if (tree->left) queue.enqueue(tree->left);
 			if (tree->right) queue.enqueue(tree->right);
@@ -763,6 +898,45 @@ levelOrder(BinaryTree *t) { //BFS
 	}
 }
 
+vector<vector<int> > levelorderTraversal(TreeNode *root) {
+	vector< vector<int> > vv; if (!root) return vv;
+	queue<TreeNode *> q;q.push(root);
+	while (q.size()) {
+		vector<int> v;
+		int count=q.size();
+		while (count--) {
+			TreeNode *tnode=q.front();q.pop();
+			if (tnode->left) q.push(tnode->left);
+			if (tnode->right) q.push(tnode->right);
+			v.push_back(tnode->val);
+		}
+		vv.push_back(v);
+	}
+	return vv;
+}
+
+//bottom-up level-order traversal methods
+vector<vector<int> > levelorderBottomUpTraversal(TreeNode *root) {
+	vector< vector<int> > vv; if (!root) return vv;
+	stack< vector<int> > sv;
+	queue<TreeNode *> q;q.push(root);
+	while (q.size()) {
+		vector<int> v;
+		int count=q.size();
+		while (count--) {
+			TreeNode *tnode=q.front();q.pop();
+			if (tnode->left) q.push(tnode->left);
+			if (tnode->right) q.push(tnode->right);
+			v.push_back(tnode->val);
+		}
+		sv.push(v);
+	}
+	while (sv.size()) {
+		vector<int> v=sv.top();sv.pop();
+		vv.push_back(v);
+	}
+	return vv;
+}
 
 /*
 ----------------
@@ -1810,7 +1984,7 @@ int my_atoi(int s[],int n) {
 	return x;
 }
 
-/* scan numbers with minus */
+// scan numbers with minus
 void scan(int x) {
 	rint i,j,k,m,v,c;
 	fgets(buf,sizeof(buf),stdin);
@@ -1822,7 +1996,7 @@ void scan(int x) {
 	}
 }
 
-/* scan numbers without minus */
+// scan numbers without minus
 void input(int s[]) {
 	rint i,j,k,c;
 	fgets(buf,sizeof(buf),stdin);
