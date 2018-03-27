@@ -3,6 +3,16 @@
 #include <string.h>
 #include <assert.h>
 
+#define rint		register int
+#define to_upper(c)	('A'+(c)-'a')
+#define to_lower(c)	('a'+(c)-'A')
+#define is_digit(c)	((c)>='0' && (c)<='9')
+#define is_lower(c)	((c)>='a' && (c)<='z')
+#define is_upper(c)	((c)>='A' && (c)<='Z')
+#define is_alpha(c)	(is_lower(c) || is_upper(c))
+#define maxv(x,y)	((x)>(y)?(x):(y))
+#define minv(x,y)	((x)<(y)?(x):(y))
+
 int main() {
     return 0;
 }
