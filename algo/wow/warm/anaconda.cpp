@@ -1,15 +1,16 @@
-// longest anaconda - main.cpp
+// longest anaconda
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE       1000
-#define THICKNESS 4
+#define SIZE	    1000
+#define THICKNESS   4
 
 int run_test(const char snake[SIZE][SIZE]);
 
 static char snake[10][SIZE][SIZE];
 
-void build_snake(void) {
+static void build_snake(void) {
   for (int l = 0; l < 10; l++) {
     for(int y = 0; y < SIZE; y++)
       for(int x = 0; x < SIZE; x++)
@@ -79,3 +80,32 @@ int main(void) {
     return 0;
 }
 
+#define rint		register int
+#define maxv(x,y)	((x)>(y)?(x):(y))
+#define minv(x,y)	((x)<(y)?(x):(y))
+
+static int len;
+static char data[SIZE][SIZE];
+static const int a[]={0,0,1,-1};
+static const int b[]={1,-1,0,0};
+
+static void visit(int x,int y) {
+    ++len;data[x][y]=0;
+    for (int k=0;k<4;++k) {
+	int i=x+a[k],j=y+b[k];
+	if (i<0 || i>=SIZE || j<0 || j>=SIZE) return;
+	if (data[i][j]) {visit(i,j);return;}
+    }
+}
+
+int run_test(const char snake[SIZE][SIZE]) {
+    int ans=0;
+    for (rint i=0;i<SIZE;++i)
+    for (rint j=0;j<SIZE;++j) data[i][j]=snake[i][j];
+    for (rint i=0;i<SIZE;++i)
+    for (rint j=0;j<SIZE;++j) if (data[i][j]) {
+	len=0;visit(i,j);
+	ans=maxv(ans,len);
+    }
+    return ans; // the length of longest anaconda
+}
