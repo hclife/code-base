@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-poem='''Programming is fun
-When the work is done
+poem='''Programming is fun.
+When the work is done.
 If you wanna make your work also fun:
     Use Python!
 '''
