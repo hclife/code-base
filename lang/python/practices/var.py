@@ -12,3 +12,7 @@ print(s)
 t='This is a string. \
 This continues the string.'
 print(t)
+
+width=20
+height=5*9
+print(width*height)
