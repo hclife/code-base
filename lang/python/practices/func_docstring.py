@@ -10,6 +10,13 @@ def print_max(x,y):
     else:
         print(y,'is maximum val')
 
+def my_func():
+    """Do nothing, but document it.
+
+    No, really, it doesn't do anything.
+    """
+
 print_max(3,5)
 print(print_max.__doc__)
+print(my_func.__doc__)
 #help(print_max)

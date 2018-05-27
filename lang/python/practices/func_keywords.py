@@ -17,3 +17,6 @@ parrot(voltage=1e6,action='VOOOOOM')
 parrot(action='VOOOOOM',voltage=1e6)
 parrot('a million','bereft of life','jump')
 parrot('a thousand',state='pushing up the daisies')
+d={"voltage":"four million","state":"bleeding demised",
+   "action":"VOOM"}
+parrot(**d)

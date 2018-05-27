@@ -2,6 +2,8 @@
 
 print(range(10))      # range() returns an iterable object
 print(list(range(5))) # list() create lists from iterables
+args=[3,8]
+print(list(range(*args))) # call with arguments unpacked from a list
 
 #for i in range(5,10):
 #for i in range(1,10,2):
