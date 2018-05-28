@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 squares=[1,4,9,16,25]
 print(squares[0])
 print(squares[-1])

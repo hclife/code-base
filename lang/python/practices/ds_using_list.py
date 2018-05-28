@@ -20,3 +20,16 @@ olditem=shoplist[0]
 del shoplist[0]
 print('I have bought the',olditem)
 print('My shopping list is now',shoplist)
+
+print('-'*64)
+# This is my fruits list
+fruits=['orange','apple','pear','banana',
+        'kiwi','apple','banana']
+print('count(apple)=',fruits.count('apple'))
+print('count(tangerine)=',fruits.count('tangerine'))
+print('index(banana)=',fruits.index('banana'))
+print('index(banana,4)=',fruits.index('banana',4))
+fruits.reverse();print(fruits)
+fruits.append('grape');print(fruits);
+fruits.sort();print(fruits)
+fruits.pop();print(fruits)
