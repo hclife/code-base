@@ -8,9 +8,13 @@ print('Why is {} playing with that second python?'.format(name))
 print('{0:.3f}'.format(1.0/3))
 print('{0:_^11}'.format('hello'))
 print('{name} wrote {book}'.format(name='Skove',book='Byte of Python'))
-print('a',end='')
-print('b',end='')
-print('c',end=' ')
-print('d',end=' ')
-print('e')
-
+print('{} and {}'.format('spam','eggs'))
+print('{0} and {1}'.format('spam','eggs'))
+print('{1} and {0}'.format('spam','eggs'))
+print('This {food} is {adjective}.'.format(food='spam',
+      adjective='absolutely horrible'))
+print('The story of {0}, {1} and {other}.'.format('Bill',
+      'Manfred',other='George'))
+table={'Sjoerd':4127,'Jack':4098,'Dcab':8637}
+print('Jack: {0[Jack]:d}, Sjoerd: {0[Sjoerd]:d},'
+      'Dcab: {0[Dcab]:d}'.format(table))

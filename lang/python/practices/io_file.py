@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 poem='''Programming is fun.
 When the work is done.
 If you wanna make your work also fun:
@@ -15,5 +16,11 @@ while True:
     line=f.readline()
     if len(line)==0:
         break
+    print(line,end='')
+f.close()
+
+# loop over file for reading lines
+f=open('poem.txt')
+for line in f:
     print(line,end='')
 f.close()

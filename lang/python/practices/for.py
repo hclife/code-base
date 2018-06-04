@@ -46,4 +46,16 @@ for num in range(2,10):
     if num%2==0:
         print('Found an even number',num)
         continue
-    print('Found a odd number',num)
+    print('Found an odd number',num)
+
+# pretty print
+for x in range(1,11):
+    print(repr(x).rjust(2),repr(x*x).rjust(4),end='')
+    print(repr(x**3).rjust(6))
+
+for x in range(1,11):
+    print(repr(x).ljust(2),repr(x*x).ljust(4),end='')
+    print(repr(x**3).ljust(6))
+
+for x in range(1,11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x,x*x,x**3))
