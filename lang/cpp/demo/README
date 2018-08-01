@@ -1,0 +1,5 @@
+This is a demo to count read/write cmds of PCMV.
+tsb:	terrier sata ssd before bitlocker
+tsa:	terrier sata ssd after  bitlocker
+enb:	eldora  nvme ssd before bitlocker
+ena:	eldora  nvme ssd after  bitlocker
