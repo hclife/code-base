@@ -39,6 +39,17 @@ typedef struct G {
     int z:7;
 } G;
 
+typedef struct H {
+    char x;
+    short y;
+    int z;
+} H;
+
+typedef struct I {
+    char x;
+    int y;
+    short z;
+} I;
 
 
 int main() {
@@ -49,5 +60,8 @@ int main() {
     printf("%lu\n",sizeof(E)); //12
     printf("%lu\n",sizeof(F)); //8
     printf("%lu\n",sizeof(G)); //12
+    printf("%lu\n",sizeof(H)); //8
+    printf("%lu\n",sizeof(I)); //12
+
     return 0;
 }
