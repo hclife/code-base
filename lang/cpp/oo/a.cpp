@@ -1,48 +1,19 @@
-#include<cstdio>
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class A
-{
+class A {
 public:
-	void foo()
-	{
-		printf("1\n");
-	}
-	virtual void fun()
-	{
-		printf("2\n");
-	}
+	int a,b;
+	A() {cout<<"A Constructor"<<endl;}
 };
 
-class B : public A
-{
+class B:public A {
 public:
-	void foo()
-	{
-		printf("3\n");
-	}
-	virtual void fun()
-	{
-		printf("4\n");
-	}
+	int c,d;
+	B() {cout<<"B Constructor"<<endl;}
 };
 
-int main(void)
-{
-	A a;
+int main() {
 	B b;
-	A *p = &a;
-	p->foo();
-	p->fun();
-	p = &b;
-	p->foo();
-	p->fun();
-
-	cout<<"---"<<endl;
-
-	B *q=(B*)&a;
-	q->foo();
-	q->fun();
 	return 0;
 }
